@@ -1,0 +1,40 @@
+FROM php:7.2-fpm-alpine
+LABEL maintainer="mayconvm@gmail.com"
+
+RUN apk add --update git make gcc g++ imagemagick-dev \
+    curl-dev \
+    libc-dev \
+    autoconf \
+    freetype-dev \
+    libjpeg-turbo-dev \
+    libpng-dev \
+    libmcrypt-dev \
+    libpcre32 \
+    bzip2 \
+    libbz2 \
+    bzip2-dev \
+    libmemcached-dev \
+    cyrus-sasl-dev \
+    binutils \
+    && rm -rf /var/cache/apk/*
+
+RUN apk update && apk add ca-certificates && \
+    apk add tzdata && \
+    ln -sf /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime && \
+    echo "America/Sao_Paulo" > /etc/timezone
+
+ENV PHALCON_VERSION=3.0.2
+WORKDIR /usr/src/php/ext/
+
+# Compile Phalcon
+RUN curl -LO https://github.com/phalcon/cphalcon/archive/v${PHALCON_VERSION}.tar.gz && \
+    tar xzf v${PHALCON_VERSION}.tar.gz
+
+RUN cd cphalcon-${PHALCON_VERSION}/build \
+    && sh install \
+    && echo "extension=phalcon.so" > /usr/local/etc/php/conf.d/phalcon.ini
+
+# clean
+RUN cd ../.. && rm -rf v${PHALCON_VERSION}.tar.gz cphalcon-${PHALCON_VERSION}
+
+# RUN docker-php-ext-install curl json pdo pdo_mysql
