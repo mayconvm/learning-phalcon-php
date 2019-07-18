@@ -1,5 +1,9 @@
 <?php
 
+# https://github.com/phalcon/vokuro/blob/master/app/config/loader.php
+# to enabled in this project
+// include_once("../vendor/autoload.php");
+
 use Phalcon\Loader;
 use Phalcon\Mvc\View;
 use Phalcon\Mvc\Application;

@@ -1,0 +1,11 @@
+{
+    "name": "maycon/phalcon-php",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "MayconVM",
+            "email": "mayconvm@gmail.com"
+        }
+    ],
+    "require": {}
+}
