@@ -11,11 +11,11 @@ The intention this projeto is create a server to do games points count.
 
 # TODO:
 
-[] Write script file to environment DEV
-    [] Make docker-composer
+[x] Write script file to environment DEV
+    [x] Make docker-composer
         [x] Container with php-phalcon
-        [] Container with Nginx
-    [] Build Project
+        [x] Container with Nginx
+    [x] Build Project
 
 
 [] Mysql
