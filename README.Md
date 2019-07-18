@@ -2,13 +2,15 @@
 
 The intention this projeto is create a server to do games points count.
 
-## Install
-	https://phalconphp.com/pt/download/linux
+## Build project
+    $ ./console 1
 
-## Start
-    * docker-compose build
+## Start project
+    $ ./console 3
+Url to access: http://localhost:8000
 
+## Access Menu
+    $ ./console
 
-# TODO:
-
+## Access TODO project:
 * https://github.com/mayconvm/learning-phalcon-php/issues/1
