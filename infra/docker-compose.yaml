@@ -1,10 +1,20 @@
 version: '3'
 services:
   application:
+    container_name: phalcon_application
     build:
       context: ./
-      dockerfile: infra/Dockerfile
-    ports:
-      - "8000:8000"
+      dockerfile: infra/Dockerfile_application
     volumes:
       - ./:/app
+  nginx:
+    container_name: phalcon_nginx
+    build:
+      context: ./
+      dockerfile: infra/Dockerfile_nginx
+    ports:
+      - "8000:80"
+    volumes:
+      - ./:/app
+
+

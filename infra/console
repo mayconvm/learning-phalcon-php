@@ -1,0 +1,61 @@
+#!/bin/bash
+
+# menu
+    # build
+    # recreate
+    # stop
+    # start
+    # reset database
+
+if [ ! -d "infra/libs/bash-oo-framework" ]; then
+    git submodule add git@github.com:niieani/bash-oo-framework.git infra/libs/bash-oo-framework
+fi
+
+source "./infra/libs/bash-oo-framework/lib/oo-bootstrap.sh"
+
+menu() {
+    import UI/Color
+
+    options() {
+        case "$1" in
+        1)
+            docker-compose build && \
+            docker-compose up --no-start
+            ;;
+        2)
+            docker-compose up -d --force-recreate
+            ;;
+        3)
+            docker-compose up -d --no-recreate
+            ;;
+        4)
+            docker-compose stop
+            ;;
+        5)
+            docker-compose restart
+            ;;
+        6)
+            echo "not implemented."
+            ;;
+        *)
+            echo "$(UI.Color.Red)Options not valid. $(UI.Color.Default)"
+            menu
+        esac
+
+        exit 0
+    }
+
+
+    test "$1" != "" && \
+        options $@ &&
+
+    echo "Options:"
+    echo "1 - Build containers"
+    echo "2 - Recreate containers"
+    echo "3 - Start containers"
+    echo "4 - Stop containers"
+    echo "5 - Restart containers"
+    echo "6 - Reset database"
+}
+
+menu $@

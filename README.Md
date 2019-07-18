@@ -13,7 +13,7 @@ The intention this projeto is create a server to do games points count.
 
 [] Write script file to environment DEV
     [] Make docker-composer
-        [] Container with php-phalcon
+        [x] Container with php-phalcon
         [] Container with Nginx
     [] Build Project
 

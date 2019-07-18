@@ -1,0 +1,3 @@
+[submodule "infra/libs/bash-oo-framework"]
+	path = infra/libs/bash-oo-framework
+	url = git@github.com:niieani/bash-oo-framework.git
